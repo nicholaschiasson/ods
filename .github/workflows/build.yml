@@ -17,5 +17,7 @@ jobs:
       with:
         packages: inkscape gnuplot ipe pdftk texlive
         version: 1.0
+    - name: texhash
+      run: texhash
     - name: make
       run: make

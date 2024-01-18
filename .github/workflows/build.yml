@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
     - uses: awalsh128/cache-apt-pkgs-action@v1.3.1
       with:
-        packages: inkscape gnuplot ipe pdflatex pdftk
+        packages: inkscape gnuplot ipe pdftk texlive-latex-base
         version: 1.0
     - name: make
       run: make

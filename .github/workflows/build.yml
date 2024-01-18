@@ -13,10 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: awalsh128/cache-apt-pkgs-action@v1.3.1
-      with:
-        packages: inkscape gnuplot ipe pdftk texlive
-        version: 1.0
+    - name: install dependencies
+      run: >
+        sudo apt install -y
+          gnuplot
+          inkscape
+          ipe
+          pdftk
+          texlive
     - name: texhash
       run: texhash
     - name: make

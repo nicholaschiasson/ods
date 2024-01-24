@@ -32,7 +32,7 @@ jobs:
     - name: build
       run: |
         make
-        make -C latex html
+        # make -C latex html
         make tarballs
     - name: upload pdfs
       uses: actions/upload-artifact@v4.3.0

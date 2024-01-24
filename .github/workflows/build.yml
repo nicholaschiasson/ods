@@ -21,9 +21,7 @@ jobs:
         version: 1.1.0
     - name: override python
       run: |
-        which python
-        which python2
-        which python3
+        which $(which python2) $(which python)
     - name: texhash
       run: |
         mkdir -p ~/texmf/tex/latex/ods/

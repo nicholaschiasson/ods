@@ -20,11 +20,8 @@ jobs:
           inkscape \
           ipe \
           pdftk \
+          python2 \
           texlive-full
-    - name: texhash
-      run: |
-        mkdir -p ~/texmf/tex/latex/ods/
-        ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
         texhash
     - name: make
       run: make

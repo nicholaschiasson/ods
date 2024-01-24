@@ -32,15 +32,20 @@ jobs:
     - name: build
       run: |
         make
-        # make -C latex html
         make tarballs
     - name: upload pdfs
       uses: actions/upload-artifact@v4.3.0
       with:
+        name: ods-pdfs
         path: latex/*.pdf
         if-no-files-found: error
     - name: upload tarballs
       uses: actions/upload-artifact@v4.3.0
       with:
+        name: ods-tarballs
         path: ./*.tgz
         if-no-files-found: error
+    - name: build html
+      run: |
+        cd latex
+        make html

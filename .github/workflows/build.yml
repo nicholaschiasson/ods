@@ -31,9 +31,15 @@ jobs:
     - name: build
       run: |
         make
+        make -C latex html
         make tarballs
-    - name: upload artifacts
+    - name: upload pdfs
       uses: actions/upload-artifact@v4.3.0
       with:
-        path: .
+        path: latex/*.pdf
+        if-no-files-found: error
+    - name: upload tarballs
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        path: ./*.tgz
         if-no-files-found: error

@@ -20,6 +20,7 @@ jobs:
           gnuplot \
           inkscape \
           ipe \
+          latex2html \
           pdftk \
           python2 \
           texlive-full

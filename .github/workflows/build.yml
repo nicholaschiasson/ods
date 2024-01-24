@@ -25,9 +25,6 @@ jobs:
         sudo apt install -y \
           gnuplot \
           inkscape
-    - name: override python
-      run: |
-        which $(which python2) $(which python)
     - name: texhash
       run: |
         mkdir -p ~/texmf/tex/latex/ods/

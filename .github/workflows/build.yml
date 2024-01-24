@@ -22,7 +22,7 @@ jobs:
           pdftk \
           texlive
     - name: texhash
-      run: >
+      run: |
         mkdir -p ~/texmf/tex/latex/ods/
         ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
         texhash

@@ -19,6 +19,7 @@ jobs:
       with:
         packages: gnuplot inkscape ipe pdftk python2 texlive-full
         version: 1.1.0
+        execute_install_scripts: true
     - name: override python
       run: |
         which $(which python2) $(which python)

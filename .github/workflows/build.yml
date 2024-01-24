@@ -21,7 +21,7 @@ jobs:
         version: 1.2.0
         execute_install_scripts: true
     - name: install non-cacheable dependencies
-      run: sudp apt install -y inkscape
+      run: sudo apt install -y inkscape
     - name: override python
       run: |
         which $(which python2) $(which python)

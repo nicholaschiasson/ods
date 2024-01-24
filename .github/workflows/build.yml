@@ -29,4 +29,11 @@ jobs:
         ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
         texhash
     - name: build
-      run: make
+      run: |
+        make
+        make tarballs
+    - name: upload artifacts
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        path: .
+        if-no-files-found: error

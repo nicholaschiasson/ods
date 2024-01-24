@@ -23,7 +23,9 @@ jobs:
           python2 \
           texlive-full
     - name: override python
-      run: sudo ln -sf $(which python) $(which python2)
+      run: |
+        sudo ln -sf $(which python) $(which python2)
+        sudo ln -sf /usr/bin/python $(which python2)
     - name: texhash
       run: |
         mkdir -p ~/texmf/tex/latex/ods/

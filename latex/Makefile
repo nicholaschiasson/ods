@@ -78,10 +78,10 @@ ods-python.tex : ods.tex Makefile
 		| ./snarf-python.py > $*-python.tex 
 
 install-pdf : ods-java.pdf ods-cpp.pdf ods-python.pdf ods-java-screen.pdf ods-cpp-screen.pdf ods-python-screen.pdf
-	scp -r $^ morin@cg.scs.carleton.ca:public_html/ods/
+	# scp -r $^ morin@cg.scs.carleton.ca:public_html/ods/
 
 install-html : java-html cpp-html python-html
-	scp -r  ods-java/ ods-cpp/ ods-python/ morin@cg.scs.carleton.ca:public_html/ods/
+	# scp -r  ods-java/ ods-cpp/ ods-python/ morin@cg.scs.carleton.ca:public_html/ods/
 
 install : install-pdf install-html
 
@@ -142,4 +142,3 @@ ods-python-html.tex : ods-python.tex Makefile
 
 %-screen.pdf : %.pdf
 	gs -o $@ -sDEVICE=pdfwrite -c "[/CropBox [53 88 379 595] /PAGES pdfmark" -f $<
-

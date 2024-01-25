@@ -22,7 +22,8 @@ jobs:
           ipe \
           latex2html \
           pdftk \
-          python2
+          python2 \
+          texlive-full
     - name: texhash
       run: |
         mkdir -p ~/texmf/tex/latex/ods/
@@ -30,8 +31,7 @@ jobs:
         texhash
     - name: build
       run: |
-        make
-        make tarballs
+        make install
     - name: upload pdfs
       uses: actions/upload-artifact@v4.3.0
       with:

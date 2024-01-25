@@ -38,11 +38,23 @@ jobs:
         name: ods-pdfs
         path: latex/*.pdf
         if-no-files-found: error
-    - name: upload html
+    - name: upload cpp html
       uses: actions/upload-artifact@v4.3.0
       with:
-        name: ods-html
-        path: latex/ods-{cpp,java,python}
+        name: ods-cpp-html
+        path: latex/ods-cpp
+        if-no-files-found: error
+    - name: upload java html
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        name: ods-java-html
+        path: latex/ods-java
+        if-no-files-found: error
+    - name: upload python html
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        name: ods-python-html
+        path: latex/ods-python
         if-no-files-found: error
     - name: upload tarballs
       uses: actions/upload-artifact@v4.3.0

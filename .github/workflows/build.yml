@@ -7,10 +7,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
-
+  build-pdfs:
     runs-on: ubuntu-22.04
-
     steps:
     - name: checkout
       uses: actions/checkout@v4.1.1
@@ -31,13 +29,36 @@ jobs:
         texhash
     - name: build and publish
       run: |
-        make install
+        make
     - name: upload pdfs
       uses: actions/upload-artifact@v4.3.0
       with:
         name: ods-pdfs
         path: latex/*.pdf
         if-no-files-found: error
+  build-html:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4.1.1
+    - name: install dependencies
+      run: |
+        sudo apt install -y \
+          gnuplot \
+          inkscape \
+          ipe \
+          latex2html \
+          pdftk \
+          python2 \
+          texlive-full
+    - name: texhash
+      run: |
+        mkdir -p ~/texmf/tex/latex/ods/
+        ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
+        texhash
+    - name: build and publish
+      run: |
+        make -C latex html
     - name: upload cpp html
       uses: actions/upload-artifact@v4.3.0
       with:
@@ -56,6 +77,29 @@ jobs:
         name: ods-python-html
         path: latex/ods-python
         if-no-files-found: error
+  build-tarballs:
+    runs-on: ubuntu-22.04
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4.1.1
+    - name: install dependencies
+      run: |
+        sudo apt install -y \
+          gnuplot \
+          inkscape \
+          ipe \
+          latex2html \
+          pdftk \
+          python2 \
+          texlive-full
+    - name: texhash
+      run: |
+        mkdir -p ~/texmf/tex/latex/ods/
+        ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
+        texhash
+    - name: build and publish
+      run: |
+        make tarballs
     - name: upload tarballs
       uses: actions/upload-artifact@v4.3.0
       with:

@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4.1.1
     - name: install dependencies
       run: |
         sudo apt install -y \
@@ -22,8 +22,7 @@ jobs:
           ipe \
           latex2html \
           pdftk \
-          python2 \
-          texlive-full
+          python2
     - name: texhash
       run: |
         mkdir -p ~/texmf/tex/latex/ods/
@@ -45,7 +44,7 @@ jobs:
         name: ods-tarballs
         path: ./*.tgz
         if-no-files-found: error
-    - name: build html
-      run: |
-        cd latex
-        make html
+    # - name: build html
+    #   run: |
+    #     cd latex
+    #     make html

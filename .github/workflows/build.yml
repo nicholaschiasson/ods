@@ -29,7 +29,7 @@ jobs:
         mkdir -p ~/texmf/tex/latex/ods/
         ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
         texhash
-    - name: build
+    - name: build and publish
       run: |
         make install
     - name: upload pdfs
@@ -38,13 +38,15 @@ jobs:
         name: ods-pdfs
         path: latex/*.pdf
         if-no-files-found: error
+    - name: upload html
+      uses: actions/upload-artifact@v4.3.0
+      with:
+        name: ods-html
+        path: latex/ods-{cpp,java,python}
+        if-no-files-found: error
     - name: upload tarballs
       uses: actions/upload-artifact@v4.3.0
       with:
         name: ods-tarballs
         path: ./*.tgz
         if-no-files-found: error
-    # - name: build html
-    #   run: |
-    #     cd latex
-    #     make html

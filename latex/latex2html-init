@@ -1,5 +1,5 @@
 
-$NOREUSE = true; # Fixes a problem with image reuse
+$REUSE = 0; # Fixes a problem with image reuse
 
 $HTML_VERSION = 4.0;
 $LOCAL_ICONS = 1;

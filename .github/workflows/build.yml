@@ -28,8 +28,7 @@ jobs:
         ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
         texhash
     - name: build and publish
-      run: |
-        make
+      run: make
     - name: upload pdfs
       uses: actions/upload-artifact@v4.3.0
       with:
@@ -58,6 +57,7 @@ jobs:
         texhash
     - name: build and publish
       run: |
+        make -C latex images
         make -C latex html
     - name: upload cpp html
       uses: actions/upload-artifact@v4.3.0
@@ -98,8 +98,7 @@ jobs:
         ln -s $PWD/latex/ods-colors.sty ~/texmf/tex/latex/ods/
         texhash
     - name: build and publish
-      run: |
-        make tarballs
+      run: make tarballs
     - name: upload tarballs
       uses: actions/upload-artifact@v4.3.0
       with:
